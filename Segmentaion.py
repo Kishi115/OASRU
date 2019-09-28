@@ -23,7 +23,7 @@ studies based on speech time per gender.
 
 '''
 from inaSpeechSegmenter import Segmenter, seg2csv
-InDirectory = 'F:\Current Semester\FYP\OASRU\EnglishStudioGrade'
+InDirectory = "D:\\UrduDataset\\NEWSPROGRAM\\PTV45Minutes\\" 
 
 #InDirectory = 'F:\\VoiceRecognition\\Foresight_research\\Ogni4Zubair'
 # please specify your file and directory here
@@ -41,7 +41,7 @@ for WavFile in os.listdir(InDirectory):
         #not using below OutDir 7_1_19
         #OutDirectory = 'F:\\vr\\UrduVoiceRecognitionGit\\SegmentationOutputAudio\\'
         
-        OutDirectory = '.\\ResultAudio\\result'+FileName+'\\'
+        OutDirectory = 'D:\\UrduDataset\\NEWSPROGRAM\PTV45Minutes\\ResultAudio\\result'+FileName+'\\'
         ensure_dir(OutDirectory)
         #>>>>>>> 69b37757d3d7ad06c578e9f6937b996582272a98
         
@@ -112,7 +112,7 @@ for WavFile in os.listdir(InDirectory):
                 tag=info[0]    
             print('Slicing...')
             Part = Part + Audio[((info[1])*1000):((info[2])*1000)]
-            if(Part.duration_seconds>=40):
+            if(Part.duration_seconds>=20):
                 print(Part.duration_seconds,'Exporting Segment ',i)
                 Part.export(OutDirectory+FileName[:len(FileName)-4]+'_'+tag+'_'
                                                     +AudioFrameRate+
