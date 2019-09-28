@@ -18,12 +18,12 @@ def ensure_dir(file_path):
 r = sr.Recognizer()
 
 #chunks' directory
-chunksdir = 'D:\\UrduDataset\\NEWSPROGRAM\PTV45Minutes\\ResultAudio\\'
+chunksdir = 'D:\\UrduDataset\\TalkShow\\CapitalTalk'
 # All folders in chunks' directroy
 chunksdirlist = os.listdir(chunksdir)
 chunksdirlist.sort(key=lambda x: os.stat(os.path.join(chunksdir, x)).st_mtime)
 #transcripts' directory 
-scriptsdir = "D:\\UrduDataset\\NEWSPROGRAM\PTV45Minutes\\ResultAudio\\ResultScripts\\"
+scriptsdir = 'D:\\UrduDataset\\TalkShow\\CapitalTalk'
 ensure_dir(scriptsdir)
 # All folders in scripts' directroy
 #scriptdirlist = os.listdir(scriptdir)
@@ -32,48 +32,49 @@ ensure_dir(scriptsdir)
 for folder in chunksdirlist:
     print(folder)
     chunkfolderdir=chunksdir+'\\'+folder+'\\'
-    chunks_in_folder= sorted(os.listdir(chunkfolderdir), 
-                       key=lambda x: os.path.getctime(os.path.join(chunkfolderdir, x)))
-    OutputFile= open(scriptsdir+folder+".doc","w+",encoding="utf-8")
-    OutputFile.close()
-    #OutputFile = Document()
-    #OutputFile.save(scriptsdir+folder+".docx")
-    for InputFile in chunks_in_folder:
-        if(InputFile.endswith('.wav')):
-            
-            print(" Start Recognizing")
-            soundbite = sr.AudioFile(chunkfolderdir+InputFile) 
-            with soundbite as source:
-                #r.adjust_for_ambient_noise(source)
-                audio = r.record(source)
-                r.adjust_for_ambient_noise(source)
-                r.__reduce__
-            try:
-                # output text file open
-                OutputFile= open(scriptsdir+folder+".doc","a+",encoding="utf-8")
-                # recognized text in variable text
-                text = r.recognize_google(audio, language="ur-PK")
-                print(text)
-                print(" Writing")
-                OutputFile.write(text+"\n")
-                #test= OutputFile.read()
-                #print('Testing: '+test)
-                print('Done!')
-                time.sleep(1)
+    if(os.path.isdir(chunkfolderdir)):
+        chunks_in_folder= sorted(os.listdir(chunkfolderdir), 
+                           key=lambda x: os.path.getctime(os.path.join(chunkfolderdir, x)))
+        OutputFile= open(scriptsdir+folder+".doc","w+",encoding="utf-8")
+        OutputFile.close()
+        #OutputFile = Document()
+        #OutputFile.save(scriptsdir+folder+".docx")
+        for InputFile in chunks_in_folder:
+            if(InputFile.endswith('.wav')):
                 
-                #close file
-                OutputFile.close()
-                
-                # Empty the text variable
-                text=""
-            except Exception as e:
-                
-                # Incase there is some undefined behaviour
-                print("There is some issue with:",InputFile)
-                OutputFile.close()
-                print (e)
-            continue
-    OutputFile.close()
+                print(" Start Recognizing")
+                soundbite = sr.AudioFile(chunkfolderdir+InputFile) 
+                with soundbite as source:
+                    #r.adjust_for_ambient_noise(source)
+                    audio = r.record(source)
+                    r.adjust_for_ambient_noise(source)
+                    r.__reduce__
+                try:
+                    # output text file open
+                    OutputFile= open(scriptsdir+folder+".doc","a+",encoding="utf-8")
+                    # recognized text in variable text
+                    text = r.recognize_google(audio, language="ur-PK")
+                    print(text)
+                    print(" Writing")
+                    OutputFile.write(text+"\n")
+                    #test= OutputFile.read()
+                    #print('Testing: '+test)
+                    print('Done!')
+                    time.sleep(1)
+                    
+                    #close file
+                    OutputFile.close()
+                    
+                    # Empty the text variable
+                    text=""
+                except Exception as e:
+                    
+                    # Incase there is some undefined behaviour
+                    print("There is some issue with:",InputFile)
+                    OutputFile.close()
+                    print (e)
+                continue
+            OutputFile.close()
         
         
     
