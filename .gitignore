@@ -22,7 +22,11 @@ sdist/
 var/
 wheels/
 EnglishStudioGrade/
+UrduStudioGrade/
 ResultAudio/
+Previous1/
+Previous2/
+Previous3/
 share/python-wheels/
 *.egg-info/
 .installed.cfg

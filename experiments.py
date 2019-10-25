@@ -35,15 +35,28 @@ for each in alllist:
 #print(summarize(""))
 
 
+#file= open(',"a+",encoding="utf-8")
+#text = file.read()
+
+
+from urduhack.stop_words import STOP_WORDS
+
+for each in STOP_WORDS:
+    print(each)
+f = open('F:\\Current Semester\\FYP\\OASRU\\1.doc', 'r',encoding="utf-8")
+txt = f.read()
+
+'''
+from nltk.corpus import stopwords 
+from nltk.tokenize import word_tokenize 
+stop_words = set(stopwords.words('urdu'))
+
+print(stop_words)
+'''
 import os
-from textteaser import TextTeaser
-tt = TextTeaser()
-text = os.read("F:\\Current Semester\\FYP\\OASRU\\ResultScripts\\45 MINT   01 03 2019-N_F_-9Z12Ew_Female_44100_CLEAN6.wav")
-tt.summarize("PTV 45 mins",text)
+import speech_recognition as sr
+import time
 
-
-
-
-
+r = sr.Recognizer()
 
 

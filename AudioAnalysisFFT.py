@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from scipy.fftpack import fft , ifft
 from pylab import*
 from scipy.io import wavfile # get the api
-fs, data = wavfile.read('..\\urdu-voice-recognition\\OriginalAudios\\test3_M.wav') # load the data
+fs, data = wavfile.read('noise-free-sound-0000.wav') # load the data
 print(fs)
 print(data)
 data = data / (2.**15)
