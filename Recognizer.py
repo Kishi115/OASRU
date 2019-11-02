@@ -16,7 +16,7 @@ def ensure_dir(file_path):
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-def Recognizer(input_files_folder,output_scripts_folder):
+def recognizer():
     
     # r is Speech Recognition Recognizer object
     r = sr.Recognizer()
