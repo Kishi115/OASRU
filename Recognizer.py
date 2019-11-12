@@ -16,7 +16,7 @@ def ensure_dir(file_path):
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-def recognizer():
+def recognizer(input_files_folder,output_scripts_folder):
     
     # r is Speech Recognition Recognizer object
     r = sr.Recognizer()
@@ -61,7 +61,7 @@ def recognizer():
             #OutputFile.save(scriptsdir+folder+".docx")
             for InputFile in chunks_in_folder:
                 
-                if(InputFile.endswith('.flac')):
+                if(InputFile.endswith('.WAV')):
                     starttime = time.time()
                     chunkname.append(InputFile)    
                     print(" Start Recognizing")
@@ -119,3 +119,6 @@ def recognizer():
     outerdf['folderlength'] = folderlength
     outerdf['recognitiontime'] = folderrecognitiontime
     outerdf.to_csv(scriptsdir+folder+'folderList.csv')
+    
+directory = 'F:\\Glovo\\Urdu\\'
+recognizer(directory,directory)

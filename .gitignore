@@ -6,7 +6,7 @@ __pycache__/
 
 # C extensions
 *.so
-
+*.json
 # Distribution / packaging
 .Python
 build/
@@ -27,6 +27,9 @@ ResultAudio/
 Previous1/
 Previous2/
 Previous3/
+ResultScripts/
+Summary/
+UrduText/
 share/python-wheels/
 *.egg-info/
 .installed.cfg
